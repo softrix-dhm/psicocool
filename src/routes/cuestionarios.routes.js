@@ -60,11 +60,12 @@ router.get('/download/:fileName',  (req, res) => {
 
         const fileName = req.params.fileName;
         const __filename = fileURLToPath(import.meta.url);
+        console.log(import.meta.url);
         const __dirname = path.dirname(__filename);        
         // const filePath = path.join(__dirname,'..', 'uploads', fileName); // Local
         const filePath = path.join(__dirname, 'uploads', fileName);
-    
-        res.download(filePath);       
+        console.log(filePath);
+        res.download("/opt/render/project/src/src/routes/uploads/"+fileName);       
       
   });
 router.post("/update-cuestionario", updCuestionarioCabCtrl)
