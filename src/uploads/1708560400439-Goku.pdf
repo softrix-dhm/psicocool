@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="Sistema de seguridad">
+    <meta name="author" content="MINEDU">
+    <link rel="icon" href="/assets/img/favicon.ico" nonce="145a557bcbd9dc613d8496f09a9d9c09">
+    <title>Mi Boleta | P&#225;gina de error</title>
+    <link href="/Content/bootstrapcss?v=a2WgiorrS1AI2xTkqFt-uaHUlxL8D1BqLO6kuQOaW7A1" rel="stylesheet"/>
+
+
+    <link href="/Content/metisMenu.min.css" rel="stylesheet">
+    <link href="/Content/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="/Content/css/AdminLTE.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/css/skins/_all-skins.css">
+    <link href="/Content/estilos.css" rel="stylesheet">
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+
+</head>
+<body id="inicio">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="logo-minedu2 text-right">
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-0 col-xs-6 col-xs-offset-3">
+                        <img class="img-responsivo" src="/img/logo-minedu.png">
+                        <hr class="linea-gris">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+<!-- Content Wrapper. Contains page content -->
+<div class="container-fluid">
+    <!-- Main content -->
+    <section class="content">
+        <div class="error-page">
+            <h2 class="headline text-yellow"> 506</h2>
+
+            <div class="error-content">
+                <h3><i class="fa fa-warning text-yellow"></i> Esta página tiene datos inconsistentes</h3>
+
+                <p>
+                    Compruebe si los datos enviados son correctos.
+                </p>
+                <p>
+                    Verifique que toda la información envidada esté acorde a su rol y/o permiso.
+                </p>
+                <p>
+                    Ve a la <a href="/">página</a> principal del SISTEMA.
+                </p>
+                <p>
+                    Busca sugerencias de búsqueda en la Ayuda.
+                </p>
+            </div>
+            <!-- /.error-content -->
+        </div>
+        <!-- /.error-page -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+    <script nonce="145a557bcbd9dc613d8496f09a9d9c09" src="/Scripts/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script nonce ="145a557bcbd9dc613d8496f09a9d9c09" type="text/javascript" src="/bundles/jquery?v=JJbyamNR351IP7ZpCfYr3b5j_miZCurpUbQealfcg2c1"></script>
+
+    <script nonce ="145a557bcbd9dc613d8496f09a9d9c09" type="text/javascript" src="/bundles/bootstrap?v=AcWl1dxknO7L_sfwfW4HMnBs3ckIPsEBOCvihmI2k2w1"></script>
+
+    <script nonce ="145a557bcbd9dc613d8496f09a9d9c09" type="text/javascript" src="/Scripts/Views/layout.js"></script>
+;
+    <script nonce ="145a557bcbd9dc613d8496f09a9d9c09" type="text/javascript" src="/Scripts/redireccionar.js"></script>
+
+    
+</body>
+</html>
