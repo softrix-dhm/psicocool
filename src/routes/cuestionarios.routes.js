@@ -26,14 +26,13 @@ const router = Router()
 // Configuración de multer para la carga de archivos
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/')
+        cb(null, 'src/uploads/')
     },
     filename: function (req, file, cb) {
         cb(null,  file.originalname)
     }
     });
 const upload = multer({ storage: storage });
-
 
 router.post("/ins-director-estudiante", insCuestionarioDE)
 router.post("/ins-cuestionario", insCuestionarioCtrl)
@@ -42,6 +41,7 @@ router.post("/list-cuestionario-grup-doc", listCuestionariosGrupDocCtrl)
 router.post("/list-cuestionario-cd-doc", listCuestionariosGrupCDDocCtrl)
 router.post('/upload', upload.single('file'), (req, res) => {
     try{
+
         console.log(storage.destination);
         const { id,filename } = req.body;
         const resp = insCuestionarioFileCtrl('I01',id,filename);
@@ -61,12 +61,10 @@ router.get('/download/:fileName',  (req, res) => {
 
         const fileName = req.params.fileName;
         const __filename = fileURLToPath(import.meta.url);
-        console.log(import.meta.url);
         const __dirname = path.dirname(__filename);        
-        // const filePath = path.join(__dirname,'..', 'uploads', fileName); // Local
-        const filePath = path.join(__dirname, 'uploads', fileName);
-        console.log(filePath);
-        res.download('uploads/'+fileName);       
+        const filePath = path.join(__dirname,'..', 'uploads', fileName);
+    
+        res.download(filePath);       
       
   });
 router.post("/update-cuestionario", updCuestionarioCabCtrl)
