@@ -65,7 +65,7 @@ router.get('/download/:fileName',  (req, res) => {
         // const filePath = path.join(__dirname,'..', 'uploads', fileName); // Local
         const filePath = path.join(__dirname, 'uploads', fileName);
         console.log(filePath);
-        res.download("https://psicocool.onrender.com/opt/render/project/src/routes/uploads/"+fileName);       
+        res.download('uploads/'+fileName);       
       
   });
 router.post("/update-cuestionario", updCuestionarioCabCtrl)
