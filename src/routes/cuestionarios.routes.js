@@ -69,15 +69,16 @@ router.get('/download/:fileName',  (req, res) => {
         const fileName = req.params.filename;
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);  
-        const filePath = path.join(__dirname, 'src/uploads/', fileName); // Ruta completa del archivo
-
-        res.download(filePath, fileName, (err) => {
-            if (err) {
-            // Manejar errores
-            console.error(err);
-            res.status(404).send('Archivo no encontrado');
-            }
-        });
+        const filePath = path.join(__dirname, '..', 'uploads', fileName); // Ruta completa del archivo
+        
+        res.download(filePath);  
+        // res.download(filePath, fileName, (err) => {
+        //     if (err) {
+        //     // Manejar errores
+        //     console.error(err);
+        //     res.status(404).send('Archivo no encontrado');
+        //     }
+        // });
       
   });
 router.post("/update-cuestionario", updCuestionarioCabCtrl)
