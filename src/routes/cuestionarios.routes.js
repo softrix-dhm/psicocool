@@ -33,7 +33,6 @@ const storage = multer.diskStorage({
     }
     });
 const upload = multer({ storage: storage });
-console.log(storage.destination);
 
 
 router.post("/ins-director-estudiante", insCuestionarioDE)
