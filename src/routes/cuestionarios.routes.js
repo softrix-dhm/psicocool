@@ -67,6 +67,8 @@ router.get('/download/:fileName',  (req, res) => {
         // res.download(filePath);  
         
         const fileName = req.params.filename;
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = path.dirname(__filename);  
         const filePath = path.join(__dirname, 'src/uploads/', fileName); // Ruta completa del archivo
 
         res.download(filePath, fileName, (err) => {
