@@ -26,7 +26,7 @@ const router = Router()
 // Configuración de multer para la carga de archivos
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'src/uploads/')
+        cb(null, 'src/src/uploads/')
     },
     filename: function (req, file, cb) {
         cb(null,  file.originalname)
