@@ -26,13 +26,15 @@ const router = Router()
 // Configuración de multer para la carga de archivos
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'src/uploads/')
+        cb(null, 'uploads/')
     },
     filename: function (req, file, cb) {
         cb(null,  file.originalname)
     }
     });
 const upload = multer({ storage: storage });
+console.log(storage.destination);
+
 
 router.post("/ins-director-estudiante", insCuestionarioDE)
 router.post("/ins-cuestionario", insCuestionarioCtrl)
@@ -41,7 +43,7 @@ router.post("/list-cuestionario-grup-doc", listCuestionariosGrupDocCtrl)
 router.post("/list-cuestionario-cd-doc", listCuestionariosGrupCDDocCtrl)
 router.post('/upload', upload.single('file'), (req, res) => {
     try{
-
+        console.log(storage.destination);
         const { id,filename } = req.body;
         const resp = insCuestionarioFileCtrl('I01',id,filename);
              
