@@ -2,10 +2,11 @@ import { login } from '../operations/login.operations.js';
 
 export const Login = async (req,res) => {
     try {
-        const { user,password,codcarg } = req.body
-        const r = await login(user,password,codcarg)  
         
-        // console.log(r);
+        const { User,Pass,CodCarg } = req.body        
+        const r = await login(User,Pass,CodCarg)  
+        
+        
 
         if(r.length === 0){
             return res.status(400).json({
