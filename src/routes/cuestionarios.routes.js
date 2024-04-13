@@ -1,4 +1,4 @@
-import { Router } from "express";
+import  express  from "express";
 import { 
      insCuestionarioDE
     ,insCuestionarioCtrl
@@ -19,20 +19,26 @@ import {
 
 import multer from 'multer';
 import { fileURLToPath } from 'url';
-import path from 'path';
+import { dirname, join } from 'path';
 
-const router = Router()
+const app = express();
+const router = express.Router();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Configuración de multer para la carga de archivos
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'src/uploads/')
+      cb(null, 'src/uploads/');
     },
     filename: function (req, file, cb) {
-        cb(null,  file.originalname)
+      cb(null, file.originalname);
     }
-    });
+  });
 const upload = multer({ storage: storage });
+
+// app.use('/src/uploads', express.static(join(__dirname, 'src/uploads')));
 
 router.post("/ins-director-estudiante", insCuestionarioDE)
 router.post("/ins-cuestionario", insCuestionarioCtrl)
@@ -43,7 +49,8 @@ router.post('/upload', upload.single('file'), (req, res) => {
     try{
 
         console.log(storage.destination);
-        const { id,filename } = req.body;
+        const { id,filename } = req.body;        
+        const newFileName = process.env.PORT
         const resp = insCuestionarioFileCtrl('I01',id,filename);
              
         return res.status(200).json({
@@ -56,41 +63,19 @@ router.post('/upload', upload.single('file'), (req, res) => {
         return res.status(500).json({ message: "Ocurrió un error" });
     }    
   });
-router.get('/download/:fileName',  (req, res) => {
-    
-
+  router.get('/download/:fileName',  (req, res) => {           
         const fileName = req.params.fileName;
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = path.dirname(__filename);        
-        const filePath = path.join(__dirname,'..', 'uploads', fileName);
-    
-        res.download(filePath);  
-        
-        // const fileName = req.params.filename;
-        // const __filename = fileURLToPath(import.meta.url);
-        // const __dirname = path.dirname(__filename);  
-        // const filePath = path.join(__dirname, '..', 'uploads', fileName); // Ruta completa del archivo
-        
-        // res.download(filePath);  
-        // // res.download(filePath, fileName, (err) => {
-        // //     if (err) {
-        // //     // Manejar errores
-        // //     console.error(err);
-        // //     res.status(404).send('Archivo no encontrado');
-        // //     }
-        // // });
-      
+        const filePath = join(__dirname,'..', 'uploads', fileName);    
+        res.download(filePath);                       
   });
-router.post("/update-cuestionario", updCuestionarioCabCtrl)
-router.post("/list-cuestionario-grup-est", listCuestionariosGrupEstCtrl)
-router.post("/list-cuestionario-cd-est", listCuestionariosGrupCDEstCtrl)
-router.post("/list-cuestionario-indiv-doc", listCuestionariosIndivDocCtrl)
-router.post("/list-cuestionario-indiv-cd-est", listCuestionariosIndivCDDocCtrl)
-router.post("/list-cita-estudiante", listCuestionariosEstudiantesCtrl)  
-router.post("/list-cita-estudiante-det", listCuestionariosEstudiantesDetCtrl)
-router.post("/list-resultado-director", listCitasDirectorCtrl)
-router.post("/list-resultado-estudiante", listCuestionariosEstudiantesPadCtrl)
-
-
+  router.post("/update-cuestionario", updCuestionarioCabCtrl)
+  router.post("/list-cuestionario-grup-est", listCuestionariosGrupEstCtrl)
+  router.post("/list-cuestionario-cd-est", listCuestionariosGrupCDEstCtrl)
+  router.post("/list-cuestionario-indiv-doc", listCuestionariosIndivDocCtrl)
+  router.post("/list-cuestionario-indiv-cd-est", listCuestionariosIndivCDDocCtrl)
+  router.post("/list-cita-estudiante", listCuestionariosEstudiantesCtrl)  
+  router.post("/list-cita-estudiante-det", listCuestionariosEstudiantesDetCtrl)
+  router.post("/list-resultado-director", listCitasDirectorCtrl)
+  router.post("/list-resultado-estudiante", listCuestionariosEstudiantesPadCtrl)
 
 export default router
